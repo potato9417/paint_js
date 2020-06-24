@@ -1,6 +1,8 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-const colors = document.getElementsByClassName("color")
+const colors = document.getElementsByClassName("color");
+const range = document.getElementById("range");
+const mode = document.getElementById("mode");
 
 // Array.from(object)   => object를 array로 만드는 방법
 // console.log(Array.from(colors))
@@ -8,7 +10,8 @@ const colors = document.getElementsByClassName("color")
 // console.log(canvas)
 
 
-let painting = false
+let painting = false;
+let filling = false;
 
 canvas.width = 800;
 canvas.height = 700;
@@ -49,6 +52,23 @@ function changeColor(event){
     ctx.strokeStyle = color
 }
 
+function changeRange(event){
+    console.log(event.target.value);
+    const range = event.target.value;
+    ctx.lineWidth = range
+}
+
+function changeMode(){
+    if(filling===true){
+        filling=false;
+        mode.innerText="BRUSH"
+    }
+    else{
+        filling=true;
+        mode.innerText="PAINT"
+    }
+}
+
 if(canvas){
     canvas.addEventListener("mousemove",onMouseMove)
     canvas.addEventListener("mousedown",startPainting)
@@ -61,3 +81,11 @@ Array.from(colors).forEach(color=>{
     console.log(color)
     color.addEventListener("click",changeColor)
 })
+
+if(range){
+    range.addEventListener("input",changeRange)
+}
+
+if(mode){
+    mode.addEventListener("click",changeMode)
+}
