@@ -9,26 +9,104 @@ body {
     background-color: rgb(232, 223, 255);
     font-family: "Pangolin", serif;
     line-height: 1.6;
-    text-align: center;
+    width: 1200px;
+    margin: auto;
 }
 #logo {
     font-size: 40px;
-    margin: 40px 0 80px;
+    margin: 50px 0 60px;
+    text-align: center;
 }
 
 #convas {
     width: 800px;
     height: 700px;
     background-color: #fff;
-    margin-right: 300px;
+    margin-right: 20px;
     border-radius: 20px;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+}
+.range {
+    margin-left: 20px;
+}
+.control {
+    vertical-align: bottom;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+.button {
+    width: 340px;
+    margin-bottom: 70px;
+    margin-left: 20px;
+}
+.button button {
+    width: 45%;
+    margin: 0 2%;
+    display: inline-block;
+    height: 40px;
+    font-family: "Pangolin", serif;
+    border: 2px solid #fff;
+    background-color: #fff;
+    outline: none;
+    border-radius: 10px;
+    font-size: 1.8rem;
+    transition: 0.25s ease;
+    cursor: pointer;
+}
+.button button:hover {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+.button #save {
+    width: 97%;
+    margin-top: 20px;
+}
+.range {
+    margin-bottom: 20px;
 }
 #colors {
-    position: absolute;
+    width: 350px;
+    margin-bottom: 70px;
 }
 #colors .color {
+    margin: 5px;
     width: 50px;
     height: 50px;
     border-radius: 100%;
-    border: 2px solid #333;
+    display: inline-block;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+#colors .color01 {
+    background-color: #222;
+}
+#colors .color02 {
+    background-color: #fff;
+}
+#colors .color03 {
+    background-color: rgb(255, 46, 46);
+}
+#colors .color04 {
+    background-color: rgb(255, 142, 50);
+}
+#colors .color05 {
+    background-color: rgb(255, 206, 46);
+}
+#colors .color06 {
+    background-color: rgb(73, 255, 57);
+}
+#colors .color07 {
+    background-color: rgb(95, 231, 255);
+}
+#colors .color08 {
+    background-color: rgb(57, 43, 255);
+}
+#colors .color09 {
+    background-color: rgb(149, 56, 255);
+}
+#colors .color10 {
+    background-color: rgb(250, 128, 240);
 }
