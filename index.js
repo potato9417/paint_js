@@ -3,6 +3,8 @@ const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("color");
 const range = document.getElementById("range");
 const mode = document.getElementById("mode");
+const clear = document.getElementById("clear");
+const save = document.getElementById("save");
 
 // Array.from(object)   => object를 array로 만드는 방법
 // console.log(Array.from(colors))
@@ -15,6 +17,10 @@ let filling = false;
 
 canvas.width = 800;
 canvas.height = 700;
+
+// 처음에 canvas의 배경이 투명으로 저장되어있기때문에 색을 채워줘야함
+ctx.fillStyle = "#fff"
+ctx.fillRect(0,0,800,700)
 
 ctx.strokeStyle = "#222222";
 ctx.lineWidth = 10;
@@ -63,12 +69,10 @@ function changeRange(event){
 function changeMode(){
     if(filling===true){
         filling=false;
-        painting=true;
         mode.innerText="BRUSH"
     }
     else{
         filling=true;
-        painting=false;
         mode.innerText="FILL ALL"
     }
 }
@@ -79,12 +83,34 @@ function clickCanvas(){
     }
 }
 
+function clearAll(){
+    ctx.fillStyle = "#fff"
+    ctx.fillRect(0,0,800,700)
+}
+
+// 우클릭 방지 (contextMenu 방지)
+function preventClick(event){
+    event.preventDefault()
+}
+
+function saveTheImg(){
+    const image = canvas.toDataURL()
+    // console.log(image)
+    const link = document.createElement("a");
+    console.log(link)
+    link.href = image;
+    link.download = "PaintJS[🎨]";
+    link.click();
+
+}
+
 if(canvas){
     canvas.addEventListener("mousemove",onMouseMove)
     canvas.addEventListener("mousedown",startPainting)
     canvas.addEventListener("mouseup", stopPainting)
     canvas.addEventListener("mouseleave",stopPainting)
     canvas.addEventListener("click", clickCanvas)
+    canvas.addEventListener("contextmenu", preventClick)
 }
 
 
@@ -99,4 +125,12 @@ if(range){
 
 if(mode){
     mode.addEventListener("click",changeMode)
+}
+
+if(clear){
+    clear.addEventListener("click",clearAll)
+}
+
+if(save){
+    save.addEventListener("click", saveTheImg)
 }
