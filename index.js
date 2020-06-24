@@ -17,7 +17,8 @@ canvas.width = 800;
 canvas.height = 700;
 
 ctx.strokeStyle = "#222222";
-ctx.lineWidth = 5;
+ctx.lineWidth = 10;
+ctx.fillStyle = "#222";
 
 
 function stopPainting(){
@@ -50,6 +51,7 @@ function changeColor(event){
     console.log(event.target.style.backgroundColor)
     const color = event.target.style.backgroundColor;
     ctx.strokeStyle = color
+    ctx.fillStyle = color
 }
 
 function changeRange(event){
@@ -61,11 +63,19 @@ function changeRange(event){
 function changeMode(){
     if(filling===true){
         filling=false;
+        painting=true;
         mode.innerText="BRUSH"
     }
     else{
         filling=true;
-        mode.innerText="PAINT"
+        painting=false;
+        mode.innerText="FILL ALL"
+    }
+}
+
+function clickCanvas(){
+    if(filling){
+        ctx.fillRect(0,0,800,700)
     }
 }
 
@@ -74,6 +84,7 @@ if(canvas){
     canvas.addEventListener("mousedown",startPainting)
     canvas.addEventListener("mouseup", stopPainting)
     canvas.addEventListener("mouseleave",stopPainting)
+    canvas.addEventListener("click", clickCanvas)
 }
 
 
